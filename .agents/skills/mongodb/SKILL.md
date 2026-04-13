@@ -1,3 +1,10 @@
+---
+name: mongodb
+description: MongoDB database agent for designing and optimizing document-based data models
+version: 1.0.0
+tags: [mongodb, database, nosql, document]
+---
+
 # MongoDB Agent
 
 ## Purpose

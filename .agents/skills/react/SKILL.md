@@ -1,3 +1,10 @@
+---
+name: react
+description: React frontend agent for building maintainable, production-ready user interfaces
+version: 1.0.0
+tags: [react, frontend, ui, javascript, typescript]
+---
+
 # React Agent
 
 ## Role

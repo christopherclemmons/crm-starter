@@ -1,3 +1,10 @@
+---
+name: nestjs
+description: NestJS backend agent for building structured, production-ready APIs
+version: 1.0.0
+tags: [nestjs, backend, nodejs, typescript, api]
+---
+
 # NestJS Agent
 
 ## Role

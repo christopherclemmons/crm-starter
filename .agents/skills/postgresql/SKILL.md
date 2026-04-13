@@ -1,3 +1,10 @@
+---
+name: postgresql
+description: PostgreSQL database agent for designing and optimizing relational database schemas
+version: 1.0.0
+tags: [postgresql, database, sql, relational]
+---
+
 # PostgreSQL Agent
 
 ## Purpose

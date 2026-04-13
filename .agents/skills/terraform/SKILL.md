@@ -1,3 +1,10 @@
+---
+name: terraform
+description: Terraform infrastructure agent for managing cloud infrastructure as code
+version: 1.0.0
+tags: [terraform, infrastructure, cloud, iac]
+---
+
 # Terraform Standards
 
 ## Purpose

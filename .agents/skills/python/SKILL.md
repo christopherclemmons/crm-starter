@@ -1,3 +1,10 @@
+---
+name: python
+description: Python engineering agent for building production-quality Python systems
+version: 1.0.0
+tags: [python, backend, scripting, data]
+---
+
 # Python Agent
 
 ## Purpose

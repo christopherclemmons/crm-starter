@@ -1,3 +1,10 @@
+---
+name: dotnet
+description: .NET backend agent for building maintainable, production-ready application services and APIs
+version: 1.0.0
+tags: [dotnet, backend, csharp, enterprise, api]
+---
+
 # .NET Agent
 
 ## Role
