@@ -1,282 +1,192 @@
-# Agent System: Production-Ready Development Framework
+# CRM Enterprise Starter
 
-## Overview
+A production-ready Customer Relationship Management (CRM) system built with .NET, designed for enterprise use. This starter kit provides a solid foundation for building comprehensive CRM solutions with sales pipeline management, customer service, and activity tracking.
 
-This repository provides a structured, reusable system for building software using AI agents with clear responsibilities, standards, and coordination rules.
+## 🚀 Quick Start
 
-Instead of relying on ad-hoc prompts, this system defines:
+### Prerequisites
+- Docker & Docker Compose
+- .NET 8.0 SDK (for local development)
 
-- specialized agents (React, .NET, NestJS, PostgreSQL, etc.)
-- shared engineering standards
-- orchestration rules for multi-agent collaboration
+### Run with Docker (Recommended)
+```bash
+# Clone the repository
+git clone <repository-url>
+cd software-agents
 
-The result is more consistent, production-ready output across projects.
+# Start the application
+docker compose up -d --build
 
----
-
-## Why This Exists
-
-Most developers using AI tools run into the same problems:
-
-- inconsistent code quality
-- conflicting architectural decisions
-- over-engineered or under-engineered solutions
-- lack of production readiness
-- no clear ownership between frontend, backend, and infrastructure
-
-This system solves that by introducing:
-
-- clear boundaries between responsibilities
-- repeatable standards
-- predictable output structure
-
----
-
-## What This Repo Provides
-
-### 1. Agent System
-
-Agents are defined as markdown files that represent specialized engineering roles.
-
-Examples:
-
-- React Agent → UI, state, frontend architecture
-- .NET Agent → backend services, APIs, business logic
-- NestJS Agent → modular Node backend systems
-- PostgreSQL Agent → schema, queries, performance
-- Terraform Agent → infrastructure as code
-
-Each agent:
-- has a clearly defined role
-- follows strict responsibilities
-- avoids stepping into other domains
-
----
-
-### 2. Orchestration Layer
-
-The system includes:
-
-- `AGENTS.md` → global rules and philosophy
-- `orchestration.md` → how agents collaborate
-
-This ensures:
-
-- correct execution order (DB → backend → frontend → infra)
-- no conflicting decisions
-- consistent multi-layer systems
-
----
-
-### 3. Engineering Standards
-
-The `/agents/standards` folder defines shared rules across all agents.
-
-These include:
-
-- coding standards
-- API design standards
-- architecture rules
-- database practices
-- security standards
-- observability standards
-- Terraform standards
-- deployment and testing expectations
-
-These standards ensure:
-
-- consistent output across all agents
-- alignment with real-world production systems
-- reduced risk of poor design decisions
-
----
-
-## Folder Structure
-
-```bash /agents
-AGENTS.md
-orchestration.md
-
-/specialists
-react-agent.md
-dotnet-agent.md
-nestjs-agent.md
-postgres-agent.md
-terraform-agent.md
-
-/standards
-coding-standards.md
-api-standards.md
-architecture-standards.md
-database-standards.md
-security-standards.md
-observability-standards.md
-terraform-standards.md
-review-checklist.md
+# The API will be available at http://localhost:8080
 ```
 
+### Local Development
+```bash
+# Start PostgreSQL database
+docker compose up postgres -d
+
+# Run the API locally
+cd src/Crm.Api
+dotnet run
+```
+
+## 📋 Features
+
+### Sales Pipeline Management
+- **Leads**: Capture and qualify potential customers
+- **Opportunities**: Track deals through the sales pipeline
+- **Accounts**: Manage customer organizations
+- **Contacts**: Store customer and prospect information
+
+### Customer Service & Support
+- **Cases**: Handle customer support tickets and issues
+- **Activities**: Log all customer interactions and communications
+
+### Task Management
+- **Tasks**: Create and track actionable items
+- **Activity Tracking**: Monitor all customer engagement
+
+## 🏗️ Architecture
+
+### Technology Stack
+- **Backend**: .NET 8.0 Web API
+- **Database**: PostgreSQL 16
+- **Containerization**: Docker & Docker Compose
+- **Architecture**: Clean Architecture with Domain-Driven Design
+
+### Project Structure
+```
+src/
+├── Crm.Api/                    # Main API application
+│   ├── Controllers/           # API endpoints
+│   ├── Domain/               # Business logic & entities
+│   │   ├── Entities/         # Domain models
+│   │   └── Enums.cs          # Domain enumerations
+│   ├── Infrastructure/       # Data access & external services
+│   └── Contracts/            # Request/Response DTOs
+└── tests/                    # Unit and integration tests
+```
+
+### Domain Entities
+- **Account**: Customer organizations
+- **Contact**: Individual people (customers, prospects)
+- **Lead**: Sales prospects
+- **Opportunity**: Sales deals
+- **Case**: Support tickets
+- **Activity**: Customer interactions
+- **Task**: Actionable items
+
+## 🔧 API Endpoints
+
+### Sales Management
+- `GET/POST/PUT/DELETE /api/accounts` - Account management
+- `GET/POST/PUT/DELETE /api/contacts` - Contact management
+- `GET/POST/PUT/DELETE /api/leads` - Lead management
+- `GET/POST/PUT/DELETE /api/opportunities` - Opportunity management
+
+### Customer Service
+- `GET/POST/PUT/DELETE /api/cases` - Case management
+- `GET/POST/PUT/DELETE /api/activities` - Activity logging
+
+### Task Management
+- `GET/POST/PUT/DELETE /api/tasks` - Task management
+
+## 🗄️ Database Schema
+
+The system uses PostgreSQL with the following key tables:
+- `accounts` - Customer organizations
+- `contacts` - Individual contacts
+- `leads` - Sales leads
+- `opportunities` - Sales opportunities
+- `cases` - Support cases
+- `activities` - Customer activities
+- `tasks` - Actionable tasks
+
+## 🧪 Testing
+
+```bash
+# Run unit tests
+dotnet test
+
+# Run integration tests
+dotnet test --filter Category=Integration
+```
+
+## 📚 Development Guidelines
+
+### Code Organization
+- **Domain Layer**: Contains business entities and logic
+- **Infrastructure Layer**: Handles data access and external services
+- **API Layer**: REST endpoints and request/response handling
+
+### Naming Conventions
+- Use PascalCase for classes and methods
+- Use camelCase for properties and parameters
+- Follow .NET naming guidelines
+
+### API Design
+- RESTful endpoints with proper HTTP methods
+- Consistent response formats
+- Input validation on all endpoints
+- Proper error handling and status codes
+
+## 🚀 Deployment
+
+### Production Deployment
+```bash
+# Build for production
+docker compose -f docker-compose.yml up -d --build
+
+# Or deploy to cloud platforms (AWS, Azure, GCP)
+# Update environment variables for production database
+```
+
+### Environment Variables
+```env
+ASPNETCORE_ENVIRONMENT=Production
+ConnectionStrings__Postgres=Host=your-db-host;Port=5432;Database=crm;Username=your-user;Password=your-password
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Submit a pull request
+
+### Development Setup
+```bash
+# Install dependencies
+dotnet restore
+
+# Run database migrations (if applicable)
+# dotnet ef database update
+
+# Run the application
+dotnet run --project src/Crm.Api
+```
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🆘 Support
+
+For support and questions:
+- Create an issue in this repository
+- Check the documentation in the `docs/` folder
+- Review the API documentation at `/swagger` when running locally
+
+## 🎯 Roadmap
+
+- [ ] Advanced reporting and analytics
+- [ ] Email integration
+- [ ] Mobile app companion
+- [ ] Multi-tenant support
+- [ ] Advanced workflow automation
+- [ ] Integration with popular business tools (Slack, Outlook, etc.)
+
 ---
 
-## How to Use This System
-
-### Step 1: Add to Your Project
-
-Copy the `/agents` folder into your project.
-
----
-
-### Step 2: Provide Context
-
-Add a `project.context.md` file describing:
-
-- what the system does
-- tech stack
-- constraints
-- architecture decisions
-
-This allows agents to align with your project.
-
----
-
-### Step 3: Use Agents Intentionally
-
-Instead of generic prompts, route work through the correct agent:
-
-Examples:
-
-- "Use the React Agent to build a dashboard UI"
-- "Use the .NET Agent to design API endpoints"
-- "Use the PostgreSQL Agent to define schema"
-
----
-
-### Step 4: Follow Orchestration
-
-For full features:
-
-1. Database (schema)
-2. Backend (API + logic)
-3. Frontend (UI)
-4. Infrastructure (deployment)
-
-This prevents common system design issues.
-
----
-
-## How This Helps Developers
-
-### 1. Consistency
-
-Every feature follows the same structure:
-
-- schema → API → UI → deployment
-
-No more random architecture decisions.
-
----
-
-### 2. Speed Without Chaos
-
-You can move fast without:
-
-- breaking patterns
-- rewriting code later
-- introducing technical debt immediately
-
----
-
-### 3. Better AI Output
-
-Instead of vague prompts, you get:
-
-- role-specific reasoning
-- domain-aware decisions
-- production-ready code
-
----
-
-### 4. Clear Ownership
-
-Each layer has defined responsibility:
-
-- frontend does not invent backend logic
-- backend does not guess database schema
-- infrastructure is not an afterthought
-
----
-
-### 5. Production Readiness
-
-This system enforces:
-
-- validation
-- security
-- observability
-- deployment discipline
-
-Things most AI-generated code ignores.
-
----
-
-## Who This Is For
-
-This system is designed for:
-
-- full stack engineers
-- backend engineers
-- cloud engineers
-- teams building production systems
-- developers using AI tools seriously
-
----
-
-## What This Is Not
-
-This is not:
-
-- a code generator
-- a framework replacement
-- a low-code tool
-
-It is:
-
-> a structured way to think, build, and scale systems using AI assistance
-
----
-
-## Philosophy
-
-This system is built on one idea:
-
-> Good software is not just written. It is structured.
-
-Agents without structure create chaos.  
-Structure without flexibility creates friction.
-
-This repo balances both.
-
----
-
-## Future Improvements
-
-Potential additions:
-
-- AWS-specific standards
-- multi-tenant SaaS patterns
-- advanced security rules
-- domain-driven design extensions
-- industry-specific agent variants
-
----
-
-## Final Thought
-
-If used correctly, this system turns AI from:
-
-> a helpful assistant
-
-into:
-
-> a structured engineering partner
-
-That is the difference between experimentation and real leverage.
+**Built with .NET 8.0 - Enterprise-ready CRM foundation**
