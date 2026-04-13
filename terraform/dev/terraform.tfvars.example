@@ -1,0 +1,8 @@
+app_name    = "crm"
+owner       = "platform"
+cost_center = "engineering"
+region      = "us-east-1"
+
+extra_tags = {
+  DataClassification = "internal"
+}
